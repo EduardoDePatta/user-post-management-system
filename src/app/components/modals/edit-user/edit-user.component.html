@@ -1,0 +1,23 @@
+<h2 mat-dialog-title>Edit User</h2>
+<div mat-dialog-content class="edit-user-form">
+  <mat-form-field appearance="fill" class="w-100 mb-3">
+    <mat-label>Login</mat-label>
+    <input matInput placeholder="Enter login" [(ngModel)]="editedUser.login" name="login">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="w-100 mb-3">
+    <mat-label>First Name</mat-label>
+    <input matInput placeholder="Enter first name" [(ngModel)]="editedUser.first_name" name="firstName">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="w-100 mb-3">
+    <mat-label>Last Name</mat-label>
+    <input matInput placeholder="Enter last name" [(ngModel)]="editedUser.last_name" name="lastName">
+  </mat-form-field>
+  <mat-form-field appearance="fill" class="w-100 mb-3">
+    <mat-label>Email</mat-label>
+    <input type="email" matInput placeholder="Enter email" [(ngModel)]="editedUser.email" name="email">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="action-buttons">
+  <button mat-raised-button color="primary" (click)="saveChanges()">Save</button>
+  <button mat-stroked-button mat-dialog-close color="warn">Cancel</button>
+</div>
