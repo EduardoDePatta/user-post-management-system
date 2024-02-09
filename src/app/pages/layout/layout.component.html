@@ -1,5 +1,5 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav mode="side" opened="false" class="sidenav">    
+  <mat-sidenav #sidenav mode="side" opened="false" class="sidenav">   
   </mat-sidenav>
 
   <mat-sidenav-content>
@@ -11,6 +11,9 @@
     </mat-toolbar>
 
     <app-autocomplete (searchEvent)="handleSearch($event)"></app-autocomplete>
+    <button mat-icon-button class="add-user-button" (click)="openAddUserModal()">
+      <mat-icon>add</mat-icon>
+    </button>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

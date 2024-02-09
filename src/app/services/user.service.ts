@@ -24,6 +24,19 @@ interface IRemoveData {
   data?: UserModel
 }
 
+interface IInsertData {
+  message?: string
+  data?: UserModel
+}
+
+export interface UserCreationModel {
+  login: string;
+  first_name: string;
+  last_name: string;
+  email: string;
+  password: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -38,9 +51,10 @@ export class UserService {
     return this.http.get<IFetchData>(`${this.apiUrl}?page=${pageIndex + 1}&limit=${pageSize}`);
   }
 
-  updateuser(): void {
+  updateUser(): void {
     this.updateUserSubject.next()
   }
+
 
   onUpdateUser(): Observable<void> {
     return this.updateUserSubject.asObservable()
@@ -61,5 +75,9 @@ export class UserService {
 
   deleteUser(userId: number): Observable<IRemoveData> {
     return this.http.delete(`${this.apiUrl}/${userId}`);
+  }
+
+  insertUser(userData: UserCreationModel): Observable<IInsertData> {
+    return this.http.post<IInsertData>(this.apiUrl, userData);
   }
 }

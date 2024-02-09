@@ -1,4 +1,4 @@
-import { Component, Inject, inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -27,12 +27,12 @@ export class EditUserComponent {
     @Inject(MAT_DIALOG_DATA) public user: UserModel,
     private snackBar: MatSnackBar,
     private userService: UserService,
-    private dialogRef: MatDialogRef<EditUserComponent>
+    private dialogRef: MatDialogRef<EditUserComponent>,
+    private http: HttpClient
   ) {
     this.editedUser = { ...user }
   }
   
-  http = inject(HttpClient)
   editedUser: UserModel
   isLoading: boolean = false
 
@@ -45,7 +45,7 @@ export class EditUserComponent {
           this.userService.fetchUsers().subscribe({
             next: (response) => {
               this.openSnackBar(response.message)
-              this.userService.updateuser()
+              this.userService.updateUser()
               this.isLoading = false
               this.dialogRef.close()
             }

@@ -1,5 +1,4 @@
-import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule, PageEvent } from '@angular/material/paginator'
 import {MatButtonModule} from '@angular/material/button'
@@ -39,10 +38,9 @@ export class TableComponent implements OnInit {
   constructor(
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private userService: UserService
+    private userService: UserService,
+    
   ){}
-
-  http = inject(HttpClient)
   data: UserModel[] = []
   isLoading: boolean = false
 
@@ -57,6 +55,15 @@ export class TableComponent implements OnInit {
     this.userService.onUpdateUser().subscribe(() => {
       this.fetchData()
     })
+    this.userService.getSearchTerm().subscribe(term => {
+      if (term) {
+        this.handleSearch(term)
+      } else {
+        this.fetchData()
+      }
+    })
+
+    this.fetchData()
   }
 
   fetchData() {
@@ -93,7 +100,7 @@ export class TableComponent implements OnInit {
     console.log("🚀 ~ TableComponent ~ handleSearch ~ searchTerm:", searchTerm)
     if (searchTerm) {
       this.isLoading = true
-      const pageIndex = this.pageEvent?.pageIndex ?? 1
+      const pageIndex = this.pageEvent?.pageIndex ?? 0
       const pageSize = this.pageEvent?.pageSize ?? 10
   
       this.userService.onSearch(searchTerm, pageIndex, pageSize).subscribe({
@@ -129,7 +136,7 @@ export class TableComponent implements OnInit {
             this.isLoading = false
           },
           error: (error) => {
-            this.openSnackBar(error.message ?? error)
+            this.openSnackBar(error.message)
             this.isLoading = false
           }
         })
