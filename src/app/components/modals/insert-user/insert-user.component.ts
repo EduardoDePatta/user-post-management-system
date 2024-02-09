@@ -64,7 +64,7 @@ export class InsertUserComponent {
           this.dialogRef.close(true)        
         },
         error: (error) => {
-          this.openSnackBar(error.message)
+          this.openSnackBar(error.error.message)
           this.isLoading = false
         }
       })

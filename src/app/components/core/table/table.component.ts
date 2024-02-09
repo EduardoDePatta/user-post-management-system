@@ -12,7 +12,6 @@ import { UserModel, UserService } from '../../../services/user.service';
 import { RemoveUserComponent } from '../../modals/remove-user/remove-user.component';
 import { AutocompleteComponent } from '../../autocomplete/autocomplete.component';
 
-// TODO: esse @component com certeza não está certo...otimizar esses imports...existe lazy, falando nisso?
 @Component({
   selector: 'app-table',
   standalone: true,
@@ -47,7 +46,7 @@ export class TableComponent implements OnInit {
   total = 0
   pageEvent?: PageEvent
 
-  displayedColumns: string[] = ['id', 'login', 'first_name', 'last_name', 'email', 'password', 'actions'];
+  displayedColumns: string[] = ['id', 'login', 'first_name', 'last_name', 'email', 'actions'];
 
 
   ngOnInit(): void {
@@ -78,7 +77,7 @@ export class TableComponent implements OnInit {
         this.isLoading = false;
       },
       error: (error) => {
-        this.openSnackBar(error.message)
+        this.openSnackBar(error.error.message)
         this.isLoading = false;
       }
     })
@@ -110,7 +109,7 @@ export class TableComponent implements OnInit {
           this.isLoading = false
         },
         error: (error) => {
-          this.openSnackBar(error.message)
+          this.openSnackBar(error.error.message)
           this.isLoading = false
         }
       })
@@ -136,7 +135,7 @@ export class TableComponent implements OnInit {
             this.isLoading = false
           },
           error: (error) => {
-            this.openSnackBar(error.message)
+            this.openSnackBar(error.error.message)
             this.isLoading = false
           }
         })
