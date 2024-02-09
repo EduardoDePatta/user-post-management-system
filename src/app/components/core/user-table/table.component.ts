@@ -11,6 +11,7 @@ import { EditUserComponent } from '../../modals/edit-user/edit-user.component';
 import { UserModel, UserService } from '../../../services/user.service';
 import { RemoveUserComponent } from '../../modals/remove-user/remove-user.component';
 import { AutocompleteComponent } from '../../autocomplete/autocomplete.component';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-table',
@@ -26,13 +27,13 @@ import { AutocompleteComponent } from '../../autocomplete/autocomplete.component
     MatDialogModule,
     EditUserComponent,
     RemoveUserComponent,
-    AutocompleteComponent
+    AutocompleteComponent,
+    MatTooltipModule
   ],
   templateUrl: './table.component.html',
-  styleUrl: './table.component.scss'
+  styleUrls: ['./table.component.scss']
 })
 
-// TODO: ver angular material > loading state(?)
 export class TableComponent implements OnInit {
   constructor(
     private dialog: MatDialog,

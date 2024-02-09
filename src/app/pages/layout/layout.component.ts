@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatSidenavModule } from '@angular/material/sidenav'
@@ -8,11 +8,12 @@ import { UserService } from '../../services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { InsertUserComponent } from '../../components/modals/insert-user/insert-user.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-layout',
   standalone: true,
-  imports: [RouterOutlet, MatSidenavModule, MatIconModule, MatToolbarModule, AutocompleteComponent, MatButtonModule],
+  imports: [RouterOutlet, MatSidenavModule, MatIconModule, MatToolbarModule, AutocompleteComponent, MatButtonModule, RouterModule, MatTooltipModule],
   templateUrl: './layout.component.html',
   styleUrl: './layout.component.scss'
 })

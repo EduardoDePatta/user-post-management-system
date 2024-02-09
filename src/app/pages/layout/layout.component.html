@@ -1,19 +1,27 @@
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" opened="false" class="sidenav">   
+    <nav>
+      <ul>
+        <li><a routerLink="/users" routerLinkActive="active" class="nav-link"><mat-icon>people</mat-icon> Users</a></li>
+        <li><a routerLink="/posts" routerLinkActive="active" class="nav-link"><mat-icon>post_add</mat-icon> Posts</a></li>
+      </ul>
+    </nav>
   </mat-sidenav>
 
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button mat-icon-button (click)="sidenav.toggle()">
+    <mat-toolbar color="primary" class="top-toolbar">
+      <button mat-icon-button (click)="sidenav.toggle()" class="menu-button">
         <mat-icon>menu</mat-icon>
       </button>
       <span id="title">User Post Management System</span>
     </mat-toolbar>
 
-    <app-autocomplete (searchEvent)="handleSearch($event)"></app-autocomplete>
-    <button mat-icon-button class="add-user-button" (click)="openAddUserModal()">
-      <mat-icon>add</mat-icon>
-    </button>
+    <div class="auto-complete-wrapper">
+      <app-autocomplete (searchEvent)="handleSearch($event)"></app-autocomplete>
+    </div>
+      <button matTooltip="Add New User" mat-icon-button class="add-user-button" (click)="openAddUserModal()">
+        <mat-icon>add</mat-icon>
+      </button>
     <div class="content-wrapper">
       <router-outlet></router-outlet>
     </div>

@@ -1,0 +1,89 @@
+.table-container {
+  display: block;
+  overflow-x: auto;
+  margin-top: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.mat-elevation-z8 {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.mat-table {
+  width: 100%;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.column {
+  text-align: left;
+}
+
+th.mat-header-cell, td.mat-cell {
+  padding: 15px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 16px;
+}
+
+tr.mat-header-row {
+  background-color: #007bff; 
+  color: white;
+}
+
+tr.mat-row:hover {
+  background-color: #e3f2fd; 
+}
+
+.mat-icon-button {
+  color: #007bff; 
+  &:hover {
+    background-color: #e3f2fd; 
+  }
+}
+
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+mat-paginator {
+  background: transparent;
+  padding: 10px 0;
+  .mat-paginator-range-label {
+    color: #666; 
+  }
+}
+
+.no-data-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  font-size: 20px;
+  color: #666;
+  text-align: center;
+  background-color: #fff;
+  margin: 20px 0;
+  flex-direction: column; 
+
+  mat-icon {
+    font-size: 48px;
+    color: #999;
+    margin-bottom: 20px;
+  }
+}
+
+button {
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.edit-button {
+  color:#007bff;
+}
+
+.delete-button {
+  color: red;
+}
