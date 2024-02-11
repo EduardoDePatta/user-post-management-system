@@ -40,7 +40,7 @@ export class EditUserComponent {
 
     if (formErrors.length === 0) {
       this.isLoading = true
-      this.http.put<ISaveChanges>(`http://localhost:3000/api/v1/user/${this.editedUser.id}`, this.editedUser)
+      this.http.put<ISaveChanges>(`http://localhost:3000/api/v1/users/${this.editedUser.id}`, this.editedUser)
         .subscribe({
           next: (response) => {
             this.openSnackBar(response.message)

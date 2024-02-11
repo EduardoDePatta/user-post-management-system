@@ -12,6 +12,7 @@ import { UserModel, UserService } from '../../../services/user.service';
 import { RemoveUserComponent } from '../../modals/remove-user/remove-user.component';
 import { AutocompleteComponent } from '../../autocomplete/autocomplete.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { PostsComponent } from '../../modals/posts/posts.component';
 
 @Component({
   selector: 'app-table',
@@ -35,20 +36,17 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 })
 
 export class TableComponent implements OnInit {
+  data: UserModel[] = []
+  isLoading: boolean = false
+  total = 0
+  pageEvent?: PageEvent
+  displayedColumns: string[] = ['id', 'login', 'first_name', 'last_name', 'email', 'actions'];
+
   constructor(
     private dialog: MatDialog,
     private snackBar: MatSnackBar,
-    private userService: UserService,
-    
+    private userService: UserService    
   ){}
-  data: UserModel[] = []
-  isLoading: boolean = false
-
-  total = 0
-  pageEvent?: PageEvent
-
-  displayedColumns: string[] = ['id', 'login', 'first_name', 'last_name', 'email', 'actions'];
-
 
   ngOnInit(): void {
     this.fetchData()
@@ -78,7 +76,7 @@ export class TableComponent implements OnInit {
         this.isLoading = false;
       },
       error: (error) => {
-        this.openSnackBar(error.error.message)
+        this.openSnackBar(error.error?.message ?? '')
         this.isLoading = false;
       }
     })
@@ -89,7 +87,8 @@ export class TableComponent implements OnInit {
     this.fetchData()
   }
 
-  handleEdit(user: UserModel){
+  handleEdit(user: UserModel, event: MouseEvent){
+    event.stopPropagation()
     this.dialog.open(EditUserComponent, {
       width: '500px',
       data: user
@@ -120,7 +119,8 @@ export class TableComponent implements OnInit {
     }
   }
 
-  handleRemove(userId: number) {
+  handleRemove(userId: number, event: MouseEvent) {
+    event.stopPropagation()
     const dialogRef = this.dialog.open(RemoveUserComponent, {
       width: '300px',
       data: { message: 'Are you sure you want to delete this user?'}
@@ -141,6 +141,13 @@ export class TableComponent implements OnInit {
           }
         })
       }
+    })
+  }
+
+  handleRowClick(user: UserModel) {
+    this.dialog.open(PostsComponent, {
+      width: '700px',
+      data: user
     })
   }
 

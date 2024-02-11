@@ -50,6 +50,8 @@
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
         <mat-error *ngIf="userForm.get('password')?.errors?.['required']">Password is required.</mat-error>
+        <mat-error *ngIf="userForm.get('password')?.errors?.['minlength']">Password must be at least 8 characters long.</mat-error>
+        <mat-error *ngIf="userForm.get('password')?.errors?.['maxlength']">Password cannot be more than 16 characters long.</mat-error>
       </mat-form-field>
     </div>   
 

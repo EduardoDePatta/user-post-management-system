@@ -1,0 +1,33 @@
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.error-message {
+  color: #f44336;
+  margin-top: 15px;
+}
+
+.first-field {
+  margin-bottom: 20px;
+  margin-top: 10px;
+}

@@ -39,7 +39,7 @@ export class InsertUserComponent {
     first_name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]),
     last_name: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(12)]),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
   })
 
   isLoading: boolean = false
